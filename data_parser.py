@@ -30,3 +30,25 @@ for i, line in enumerate(open('yelp_academic_dataset_review.json')):
 #    if i ==  10000:
 #        print 'complete reading ', i
 #        break
+#calculate tfidf
+tfidf = defaultdict(lambda: defaultdict(int))
+for b in business_tf:
+    for w in business_tf[b]:
+        business_tf[b][w] = business_tf[b][w] * 1.0 / business_review_length[b]
+
+for w in idf:
+    idf[w] = log(total_file * 1.0 / idf[w], 10)
+
+
+#finding important keywords for each business
+#write training results to a .csv file
+csvfile = file('yelp_academic_dataset_review_idf.csv', 'wb')
+writer = csv.writer(csvfile)
+writer.writerow(['business_id', 'key_words'])
+
+for i, b in enumerate(business_tf):
+    for w in business_tf[b]:
+        tfidf[b][w] = business_tf[b][w] * idf[w]
+    word_importance = [(tfidf[b][w], w) for w in tfidf[b]]
+    word_importance.sort()
+    word_importance.reverse()
