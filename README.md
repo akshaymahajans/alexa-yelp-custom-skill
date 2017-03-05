@@ -1,2 +1,2 @@
-# yelp-dataset-lex-chatbot
-A chatbot utilizing AWS Lex to give information about reliability of Yelp reviewers
+# yelp-dataset-alexa-module
+Parses yelp dataset into csv file containing most important words associated with each restaurant. 
