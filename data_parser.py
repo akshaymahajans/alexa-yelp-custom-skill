@@ -52,3 +52,17 @@ for i, b in enumerate(business_tf):
     word_importance = [(tfidf[b][w], w) for w in tfidf[b]]
     word_importance.sort()
     word_importance.reverse()
+    #print word_importance[:10]
+    top_words = []
+    for w in word_importance:
+        token_word = nltk.word_tokenize(w[1])
+        pos_tag = nltk.pos_tag(token_word)[0][1]
+        # print pos_tag
+        if pos_tag == 'JJ':
+            top_words.append(w[1])
+        if len(top_words) == 10:
+            break
+    writer.writerow([b, top_words])
+    if i % 100 == 0:
+        print 'business analyzed :', i
+csvfile.close()
