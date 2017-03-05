@@ -1,12 +1,4 @@
 'use strict';
-/**
- * This sample demonstrates a simple skill built with the Amazon Alexa Skills Kit.
- * The Intent Schema, Custom Slots, and Sample Utterances for this skill, as well as
- * testing instructions are located at http://amzn.to/1LzFrj6
- *
- * For additional samples, visit the Alexa Skills Kit Getting Started guide at
- * http://amzn.to/1LGWsLG
- */
 // --------------- Helpers that build all of the responses -----------------------
 function buildSpeechletResponse(title, output, repromptText, shouldEndSession) {
     return {
@@ -40,19 +32,18 @@ function getWelcomeResponse(callback) {
     // If we wanted to initialize the session to have some attributes we could add those here.
     const sessionAttributes = {};
     const cardTitle = 'Welcome';
-    const speechOutput = 'Welcome to the Alexa Skills Kit sample. ' +
-        'Please tell me your favorite color by saying, my favorite color is red';
+    const speechOutput = 'Hi - welcome to the yelp integration on Alexa! ' +
+        'Please ask me about any restaurant you want to learn about by asking me in the following format - Alexa, ask Yelp about..";
     // If the user either does not reply to the welcome message or says something that is not
     // understood, they will be prompted again with this text.
-    const repromptText = 'Please tell me your favorite color by saying, ' +
-        'my favorite color is red';
+    const repromptText = 'Please ask me any questions you have about local businesses in your area. ';
     const shouldEndSession = false;
     callback(sessionAttributes,
         buildSpeechletResponse(cardTitle, speechOutput, repromptText, shouldEndSession));
 }
 function handleSessionEndRequest(callback) {
     const cardTitle = 'Session Ended';
-    const speechOutput = 'Thank you for trying the Alexa Skills Kit sample. Have a nice day!';
+    const speechOutput = 'Thanks for working with me. Enjoy your day!';
     // Setting this to true ends the session and exits the skill.
     const shouldEndSession = true;
     callback({}, buildSpeechletResponse(cardTitle, speechOutput, null, shouldEndSession));
