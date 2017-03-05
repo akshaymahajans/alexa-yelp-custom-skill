@@ -99,8 +99,6 @@ function onIntent(intentRequest, session, callback) {
     // Dispatch to your skill's intent handlers
     if (intentName === 'GetRestaurantInfo') {
         getRestInfo(intent, session, callback);
-    } else if (intentName === 'WhatsMyColorIntent') {
-        getColorFromSession(intent, session, callback);
     } else if (intentName === 'AMAZON.HelpIntent') {
         getWelcomeResponse(callback);
     } else if (intentName === 'AMAZON.StopIntent' || intentName === 'AMAZON.CancelIntent') {
@@ -154,3 +152,4 @@ exports.handler = (event, context, callback) => {
     } catch (err) {
         callback(err);
     }
+};
